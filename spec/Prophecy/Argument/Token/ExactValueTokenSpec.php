@@ -106,13 +106,13 @@ class ExactValueTokenSpec extends ObjectBehavior
 
     function it_generates_proper_string_representation_for_empty_array()
     {
-        $this->beConstructedWith(array());
+        $this->beConstructedWith([]);
         $this->__toString()->shouldReturn('exact([])');
     }
 
     function it_generates_proper_string_representation_for_array()
     {
-        $this->beConstructedWith(array('zet', 42));
+        $this->beConstructedWith(['zet', 42]);
         $this->__toString()->shouldReturn('exact(["zet", 42])');
     }
 

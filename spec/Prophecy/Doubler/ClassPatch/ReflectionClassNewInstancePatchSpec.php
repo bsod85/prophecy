@@ -35,7 +35,7 @@ class ReflectionClassNewInstancePatchSpec extends ObjectBehavior
         ArgumentNode $arg1
     ) {
         $class->getMethod('newInstance')->willReturn($method);
-        $method->getArguments()->willReturn(array($arg1));
+        $method->getArguments()->willReturn([$arg1]);
         $arg1->setDefault(null)->shouldBeCalled();
 
         $this->apply($class);

@@ -30,7 +30,7 @@ class CallCenter
     /**
      * @var Call[]
      */
-    private $recordedCalls = array();
+    private $recordedCalls = [];
 
     /**
      * Initializes call center.
@@ -73,10 +73,10 @@ class CallCenter
         }
 
         // There are method prophecies, so it's a fake/stub. Searching prophecy for this call
-        $matches = array();
+        $matches = [];
         foreach ($prophecy->getMethodProphecies($methodName) as $methodProphecy) {
             if (0 < $score = $methodProphecy->getArgumentsWildcard()->scoreArguments($arguments)) {
-                $matches[] = array($score, $methodProphecy);
+                $matches[] = [$score, $methodProphecy];
             }
         }
 
@@ -147,12 +147,12 @@ class CallCenter
         $argstring = implode(
             ",\n",
             $this->indentArguments(
-                array_map(array($this->util, 'stringify'), $arguments),
+                array_map([$this->util, 'stringify'], $arguments),
                 $indentationLength
             )
         );
 
-        $expected = array();
+        $expected = [];
 
         foreach (call_user_func_array('array_merge', $prophecy->getMethodProphecies()) as $methodProphecy) {
             $expected[] = sprintf(

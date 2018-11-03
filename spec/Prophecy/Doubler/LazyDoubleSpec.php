@@ -15,14 +15,14 @@ class LazyDoubleSpec extends ObjectBehavior
 
     function it_returns_anonymous_double_instance_by_default($doubler, ProphecySubjectInterface $double)
     {
-        $doubler->double(null, array())->willReturn($double);
+        $doubler->double(null, [])->willReturn($double);
 
         $this->getInstance()->shouldReturn($double);
     }
 
     function it_returns_class_double_instance_if_set($doubler, ProphecySubjectInterface $double, \ReflectionClass $class)
     {
-        $doubler->double($class, array())->willReturn($double);
+        $doubler->double($class, [])->willReturn($double);
 
         $this->setParentClass($class);
 
@@ -34,8 +34,8 @@ class LazyDoubleSpec extends ObjectBehavior
         ProphecySubjectInterface $double1,
         ProphecySubjectInterface $double2
     ) {
-        $doubler->double(null, array())->willReturn($double1);
-        $doubler->double(null, array())->willReturn($double2);
+        $doubler->double(null, [])->willReturn($double1);
+        $doubler->double(null, [])->willReturn($double2);
 
         $this->getInstance()->shouldReturn($double2);
         $this->getInstance()->shouldReturn($double2);
@@ -51,7 +51,7 @@ class LazyDoubleSpec extends ObjectBehavior
         $doubler,
         ProphecySubjectInterface $double
     ) {
-        $doubler->double(null, array())->willReturn($double);
+        $doubler->double(null, [])->willReturn($double);
 
         $this->getInstance();
 
@@ -69,7 +69,7 @@ class LazyDoubleSpec extends ObjectBehavior
         $doubler,
         ProphecySubjectInterface $double
     ) {
-        $doubler->double(null, array())->willReturn($double);
+        $doubler->double(null, [])->willReturn($double);
 
         $this->getInstance();
 

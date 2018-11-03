@@ -13,7 +13,7 @@ class ProphetSpec extends ObjectBehavior
 {
     function let(Doubler $doubler, ProphecySubjectInterface $double)
     {
-        $doubler->double(null, array())->willReturn($double);
+        $doubler->double(null, [])->willReturn($double);
 
         $this->beConstructedWith($doubler);
     }
@@ -26,7 +26,7 @@ class ProphetSpec extends ObjectBehavior
 
     function it_constructs_new_prophecy_with_parent_class_if_specified($doubler, ProphecySubjectInterface $newDouble)
     {
-        $doubler->double(Argument::any(), array())->willReturn($newDouble);
+        $doubler->double(Argument::any(), [])->willReturn($newDouble);
 
         $this->prophesize('Prophecy\Prophet')->reveal()->shouldReturn($newDouble);
     }
@@ -43,7 +43,7 @@ class ProphetSpec extends ObjectBehavior
         $prophecy1 = $this->prophesize();
         $prophecy2 = $this->prophesize();
 
-        $this->getProphecies()->shouldReturn(array($prophecy1, $prophecy2));
+        $this->getProphecies()->shouldReturn([$prophecy1, $prophecy2]);
     }
 
     function it_does_nothing_during_checkPredictions_call_if_no_predictions_defined()

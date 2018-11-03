@@ -58,8 +58,8 @@ class ArrayEntryToken implements TokenInterface
             return false;
         }
 
-        $keyScores = array_map(array($this->key,'scoreArgument'), array_keys($argument));
-        $valueScores = array_map(array($this->value,'scoreArgument'), $argument);
+        $keyScores = array_map([$this->key,'scoreArgument'], array_keys($argument));
+        $valueScores = array_map([$this->value,'scoreArgument'], $argument);
         $scoreEntry = function ($value, $key) {
             return $value && $key ? min(8, ($key + $value) / 2) : false;
         };
@@ -138,6 +138,6 @@ class ArrayEntryToken implements TokenInterface
 
         $key = $this->key->getValue();
 
-        return $object->offsetExists($key) ? array($key => $object[$key]) : array();
+        return $object->offsetExists($key) ? [$key => $object[$key]] : [];
     }
 }

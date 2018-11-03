@@ -58,7 +58,7 @@ final class ClassAndInterfaceTagRetriever implements MethodTagRetrieverInterface
     private function getInterfacesTagList(\ReflectionClass $reflectionClass)
     {
         $interfaces = $reflectionClass->getInterfaces();
-        $tagList = array();
+        $tagList = [];
 
         foreach($interfaces as $interface) {
             $tagList = array_merge($tagList, $this->classRetriever->getTagList($interface));

@@ -9,7 +9,7 @@ class CallSpec extends ObjectBehavior
 {
     function let(\Exception $exception)
     {
-        $this->beConstructedWith('setValues', array(5, 2), 42, $exception, 'some_file.php', 23);
+        $this->beConstructedWith('setValues', [5, 2], 42, $exception, 'some_file.php', 23);
     }
 
     function it_exposes_method_name_through_getter()
@@ -19,7 +19,7 @@ class CallSpec extends ObjectBehavior
 
     function it_exposes_arguments_through_getter()
     {
-        $this->getArguments()->shouldReturn(array(5, 2));
+        $this->getArguments()->shouldReturn([5, 2]);
     }
 
     function it_exposes_return_value_through_getter()
@@ -45,7 +45,7 @@ class CallSpec extends ObjectBehavior
 
     function it_returns_unknown_as_callPlace_if_no_file_or_line_provided()
     {
-        $this->beConstructedWith('setValues', array(), 0, null, null, null);
+        $this->beConstructedWith('setValues', [], 0, null, null, null);
 
         $this->getCallPlace()->shouldReturn('unknown');
     }
@@ -58,7 +58,7 @@ class CallSpec extends ObjectBehavior
 
     function it_caches_and_returns_wildcard_match_score(ArgumentsWildcard $wildcard)
     {
-        $wildcard->scoreArguments(array(5, 2))->willReturn(13)->shouldBeCalledTimes(1);
+        $wildcard->scoreArguments([5, 2])->willReturn(13)->shouldBeCalledTimes(1);
         $this->getScore($wildcard)->shouldReturn(13);
         $this->getScore($wildcard)->shouldReturn(13);
     }

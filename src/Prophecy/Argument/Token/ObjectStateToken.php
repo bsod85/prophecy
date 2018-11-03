@@ -58,7 +58,7 @@ class ObjectStateToken implements TokenInterface
     public function scoreArgument($argument)
     {
         if (is_object($argument) && method_exists($argument, $this->name)) {
-            $actual = call_user_func(array($argument, $this->name));
+            $actual = call_user_func([$argument, $this->name]);
 
             $comparator = $this->comparatorFactory->getComparatorFor(
                 $this->value, $actual

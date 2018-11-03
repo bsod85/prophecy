@@ -18,7 +18,7 @@ namespace Prophecy\Argument\Token;
  */
 class LogicalAndToken implements TokenInterface
 {
-    private $tokens = array();
+    private $tokens = [];
 
     /**
      * @param array $arguments exact values or tokens

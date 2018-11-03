@@ -54,7 +54,7 @@ class ArrayEntryTokenSpec extends ObjectBehavior
     {
         $key->scoreArgument('key')->willReturn(4);
         $value->scoreArgument('value')->willReturn(6);
-        $this->scoreArgument(array('key'=>'value'))->shouldBe(5);
+        $this->scoreArgument(['key'=>'value'])->shouldBe(5);
     }
 
     function it_scores_traversable_object_half_of_combined_scores_from_key_and_value_tokens(
@@ -127,12 +127,12 @@ class ArrayEntryTokenSpec extends ObjectBehavior
 
     function it_does_not_score_empty_array()
     {
-        $this->scoreArgument(array())->shouldBe(false);
+        $this->scoreArgument([])->shouldBe(false);
     }
 
     function it_does_not_score_array_if_key_and_value_tokens_do_not_score_same_entry($key, $value)
     {
-        $argument = array(1 => 'foo', 2 => 'bar');
+        $argument = [1 => 'foo', 2 => 'bar'];
         $key->scoreArgument(1)->willReturn(true);
         $key->scoreArgument(2)->willReturn(false);
         $value->scoreArgument('foo')->willReturn(false);
@@ -197,6 +197,6 @@ class ArrayEntryTokenSpec extends ObjectBehavior
     {
         $key->scoreArgument('key')->willReturn(10);
         $value->scoreArgument('value')->willReturn(10);
-        $this->scoreArgument(array('key'=>'value'))->shouldBe(8);
+        $this->scoreArgument(['key'=>'value'])->shouldBe(8);
     }
 }

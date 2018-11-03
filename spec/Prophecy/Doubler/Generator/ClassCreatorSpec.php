@@ -29,7 +29,7 @@ class ClassCreatorSpec extends ObjectBehavior
         );
 
         $class->getParentClass()->willReturn('stdClass');
-        $class->getInterfaces()->willReturn(array('Interface1', 'Interface2'));
+        $class->getInterfaces()->willReturn(['Interface1', 'Interface2']);
 
         $this->shouldThrow('Prophecy\Exception\Doubler\ClassCreatorException')
             ->duringCreate('CustomClass', $class);

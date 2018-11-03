@@ -55,7 +55,7 @@ class ExportUtil
             return (array) $value;
         }
 
-        $array = array();
+        $array = [];
 
         foreach ((array) $value as $key => $val) {
             // properties are transformed to keys in the following way:
@@ -91,10 +91,10 @@ class ExportUtil
             }
 
             foreach ($value as $key => $val) {
-                $array[spl_object_hash($val)] = array(
+                $array[spl_object_hash($val)] = [
                     'obj' => $val,
                     'inf' => $value->getInfo(),
-                );
+                ];
             }
         }
 
@@ -143,7 +143,7 @@ class ExportUtil
             }
 
             return "'" .
-            str_replace(array("\r\n", "\n\r", "\r"), array("\n", "\n", "\n"), $value) .
+            str_replace(["\r\n", "\n\r", "\r"], ["\n", "\n", "\n"], $value) .
             "'";
         }
 

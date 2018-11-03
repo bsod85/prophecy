@@ -44,7 +44,7 @@ class StringContainsTokenSpec extends ObjectBehavior
 
     function it_does_not_score_if_the_argument_is_not_a_string()
     {
-        $this->scoreArgument(array('a substring', 'other value'))->shouldReturn(false);
+        $this->scoreArgument(['a substring', 'other value'])->shouldReturn(false);
     }
 
     function its_string_representation_shows_substring()

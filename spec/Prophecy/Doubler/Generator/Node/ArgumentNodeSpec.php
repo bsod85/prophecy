@@ -80,8 +80,8 @@ class ArgumentNodeSpec extends ObjectBehavior
 
     function its_default_is_mutable()
     {
-        $this->setDefault(array());
-        $this->getDefault()->shouldReturn(array());
+        $this->setDefault([]);
+        $this->getDefault()->shouldReturn([]);
     }
 
     function it_is_marked_as_optional_when_default_is_set()

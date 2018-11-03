@@ -36,7 +36,7 @@ class Prophet
     /**
      * @var ObjectProphecy[]
      */
-    private $prophecies = array();
+    private $prophecies = [];
 
     /**
      * Initializes Prophet.

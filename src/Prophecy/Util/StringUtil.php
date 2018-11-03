@@ -42,10 +42,10 @@ class StringUtil
     {
         if (is_array($value)) {
             if (range(0, count($value) - 1) === array_keys($value)) {
-                return '['.implode(', ', array_map(array($this, __FUNCTION__), $value)).']';
+                return '['.implode(', ', array_map([$this, __FUNCTION__], $value)).']';
             }
 
-            $stringify = array($this, __FUNCTION__);
+            $stringify = [$this, __FUNCTION__];
 
             return '['.implode(', ', array_map(function ($item, $key) use ($stringify) {
                 return (is_integer($key) ? $key : '"'.$key.'"').
@@ -91,7 +91,7 @@ class StringUtil
         return implode(PHP_EOL, array_map(function (Call $call) use ($self) {
             return sprintf('  - %s(%s) @ %s',
                 $call->getMethodName(),
-                implode(', ', array_map(array($self, 'stringify'), $call->getArguments())),
+                implode(', ', array_map([$self, 'stringify'], $call->getArguments())),
                 str_replace(GETCWD().DIRECTORY_SEPARATOR, '', $call->getCallPlace())
             );
         }, $calls));

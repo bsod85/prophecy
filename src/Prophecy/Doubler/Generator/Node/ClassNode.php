@@ -22,14 +22,14 @@ use Prophecy\Exception\InvalidArgumentException;
 class ClassNode
 {
     private $parentClass = 'stdClass';
-    private $interfaces  = array();
-    private $properties  = array();
-    private $unextendableMethods = array();
+    private $interfaces  = [];
+    private $properties  = [];
+    private $unextendableMethods = [];
 
     /**
      * @var MethodNode[]
      */
-    private $methods     = array();
+    private $methods = [];
 
     public function getParentClass()
     {
@@ -83,7 +83,7 @@ class ClassNode
     {
         $visibility = strtolower($visibility);
 
-        if (!in_array($visibility, array('public', 'private', 'protected'))) {
+        if (!in_array($visibility, ['public', 'private', 'protected'])) {
             throw new InvalidArgumentException(sprintf(
                 '`%s` property visibility is not supported.', $visibility
             ));

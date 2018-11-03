@@ -36,7 +36,7 @@ class AggregateExceptionSpec extends ObjectBehavior
 
         $this->append($exception);
 
-        $this->getExceptions()->shouldReturn(array($exception));
+        $this->getExceptions()->shouldReturn([$exception]);
     }
 
     function it_should_update_message_during_append(PredictionException $exception)

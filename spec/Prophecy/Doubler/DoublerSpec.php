@@ -24,7 +24,7 @@ class DoublerSpec extends ObjectBehavior
     function its_registerClassPatch_adds_a_patch_to_the_doubler(ClassPatchInterface $patch)
     {
         $this->registerClassPatch($patch);
-        $this->getClassPatches()->shouldReturn(array($patch));
+        $this->getClassPatches()->shouldReturn([$patch]);
     }
 
     function its_getClassPatches_sorts_patches_by_priority(
@@ -43,7 +43,7 @@ class DoublerSpec extends ObjectBehavior
         $this->registerClassPatch($alt3);
         $this->registerClassPatch($alt4);
 
-        $this->getClassPatches()->shouldReturn(array($alt2, $alt3, $alt1, $alt4));
+        $this->getClassPatches()->shouldReturn([$alt2, $alt3, $alt1, $alt4]);
     }
 
     function its_double_mirrors_alterates_and_instantiates_provided_class(
@@ -57,12 +57,12 @@ class DoublerSpec extends ObjectBehavior
         \ReflectionClass $interface2,
         ClassNode $node
     ) {
-        $mirror->reflect($class, array($interface1, $interface2))->willReturn($node);
+        $mirror->reflect($class, [$interface1, $interface2])->willReturn($node);
         $alt1->supports($node)->willReturn(true);
         $alt2->supports($node)->willReturn(false);
         $alt1->getPriority()->willReturn(1);
         $alt2->getPriority()->willReturn(2);
-        $namer->name($class, array($interface1, $interface2))->willReturn('SplStack');
+        $namer->name($class, [$interface1, $interface2])->willReturn('SplStack');
         $class->getName()->willReturn('stdClass');
         $interface1->getName()->willReturn('ArrayAccess');
         $interface2->getName()->willReturn('Iterator');
@@ -74,7 +74,7 @@ class DoublerSpec extends ObjectBehavior
         $this->registerClassPatch($alt1);
         $this->registerClassPatch($alt2);
 
-        $this->double($class, array($interface1, $interface2))
+        $this->double($class, [$interface1, $interface2])
             ->shouldReturnAnInstanceOf('SplStack');
     }
 
@@ -85,10 +85,10 @@ class DoublerSpec extends ObjectBehavior
         $namer
     ) {
         $class->getName()->willReturn('ReflectionClass');
-        $mirror->reflect($class, array())->willReturn($node);
-        $namer->name($class, array())->willReturn('ReflectionClass');
+        $mirror->reflect($class, [])->willReturn($node);
+        $namer->name($class, [])->willReturn('ReflectionClass');
 
-        $double = $this->double($class, array(), array('stdClass'));
+        $double = $this->double($class, [], ['stdClass']);
         $double->shouldBeAnInstanceOf('ReflectionClass');
         $double->getName()->shouldReturn('stdClass');
     }
@@ -100,10 +100,10 @@ class DoublerSpec extends ObjectBehavior
         $namer
     ) {
         $class->getName()->willReturn('spec\Prophecy\Doubler\WithFinalConstructor');
-        $mirror->reflect($class, array())->willReturn($node);
-        $namer->name($class, array())->willReturn('spec\Prophecy\Doubler\WithFinalConstructor');
+        $mirror->reflect($class, [])->willReturn($node);
+        $namer->name($class, [])->willReturn('spec\Prophecy\Doubler\WithFinalConstructor');
 
-        $double = $this->double($class, array());
+        $double = $this->double($class, []);
 
         $double->shouldBeAnInstanceOf('spec\Prophecy\Doubler\WithFinalConstructor');
     }

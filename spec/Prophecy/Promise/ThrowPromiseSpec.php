@@ -24,7 +24,7 @@ class ThrowPromiseSpec extends ObjectBehavior
         $this->beConstructedWith('InvalidArgumentException');
 
         $this->shouldThrow('InvalidArgumentException')
-            ->duringExecute(array(), $object, $method);
+            ->duringExecute([], $object, $method);
     }
 
     function it_instantiates_exceptions_with_required_arguments(ObjectProphecy $object, MethodProphecy $method)
@@ -32,14 +32,14 @@ class ThrowPromiseSpec extends ObjectBehavior
         $this->beConstructedWith('spec\Prophecy\Promise\RequiredArgumentException');
 
         $this->shouldThrow('spec\Prophecy\Promise\RequiredArgumentException')
-            ->duringExecute(array(), $object, $method);
+            ->duringExecute([], $object, $method);
     }
 
     function it_throws_provided_exception(ObjectProphecy $object, MethodProphecy $method)
     {
         $this->beConstructedWith($exc = new \RuntimeException('Some exception'));
 
-        $this->shouldThrow($exc)->duringExecute(array(), $object, $method);
+        $this->shouldThrow($exc)->duringExecute([], $object, $method);
     }
 
     function it_throws_error_instances(ObjectProphecy $object, MethodProphecy $method)
@@ -50,7 +50,7 @@ class ThrowPromiseSpec extends ObjectBehavior
 
         $this->beConstructedWith($exc = new \Error('Error exception'));
 
-        $this->shouldThrow($exc)->duringExecute(array(), $object, $method);
+        $this->shouldThrow($exc)->duringExecute([], $object, $method);
     }
 
     function it_throws_errors_by_class_name()

@@ -114,7 +114,7 @@ class MethodNodeSpec extends ObjectBehavior
         $this->addArgument($argument1);
         $this->addArgument($argument2);
 
-        $this->getArguments()->shouldReturn(array($argument1, $argument2));
+        $this->getArguments()->shouldReturn([$argument1, $argument2]);
     }
 
     function it_does_not_have_return_type_by_default()

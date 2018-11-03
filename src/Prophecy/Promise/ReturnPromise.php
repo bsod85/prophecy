@@ -21,7 +21,7 @@ use Prophecy\Prophecy\MethodProphecy;
  */
 class ReturnPromise implements PromiseInterface
 {
-    private $returnValues = array();
+    private $returnValues = [];
 
     /**
      * Initializes promise.

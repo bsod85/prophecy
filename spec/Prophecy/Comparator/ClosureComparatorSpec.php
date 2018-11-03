@@ -18,9 +18,9 @@ class ClosureComparatorSpec extends ObjectBehavior
         $this->accepts('string', 'string')->shouldReturn(false);
         $this->accepts(false, true)->shouldReturn(false);
         $this->accepts(true, false)->shouldReturn(false);
-        $this->accepts((object)array(), (object)array())->shouldReturn(false);
-        $this->accepts(function(){}, (object)array())->shouldReturn(false);
-        $this->accepts(function(){}, (object)array())->shouldReturn(false);
+        $this->accepts((object)[], (object)[])->shouldReturn(false);
+        $this->accepts(function(){}, (object)[])->shouldReturn(false);
+        $this->accepts(function(){}, (object)[])->shouldReturn(false);
 
         $this->accepts(function(){}, function(){})->shouldReturn(true);
     }

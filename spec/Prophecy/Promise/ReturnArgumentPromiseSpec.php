@@ -15,17 +15,17 @@ class ReturnArgumentPromiseSpec extends ObjectBehavior
 
     function it_should_return_first_argument_if_provided(ObjectProphecy $object, MethodProphecy $method)
     {
-        $this->execute(array('one', 'two'), $object, $method)->shouldReturn('one');
+        $this->execute(['one', 'two'], $object, $method)->shouldReturn('one');
     }
 
     function it_should_return_null_if_no_arguments_provided(ObjectProphecy $object, MethodProphecy $method)
     {
-        $this->execute(array(), $object, $method)->shouldReturn(null);
+        $this->execute([], $object, $method)->shouldReturn(null);
     }
 
     function it_should_return_nth_argument_if_provided(ObjectProphecy $object, MethodProphecy $method)
     {
         $this->beConstructedWith(1);
-        $this->execute(array('one', 'two'), $object, $method)->shouldReturn('two');
+        $this->execute(['one', 'two'], $object, $method)->shouldReturn('two');
     }
 }

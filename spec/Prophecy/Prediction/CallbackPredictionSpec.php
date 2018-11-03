@@ -29,6 +29,6 @@ class CallbackPredictionSpec extends ObjectBehavior
 
         $this->beConstructedWith($returnFirstCallCallback);
 
-        $this->shouldThrow('RuntimeException')->duringCheck(array($call), $object, $method);
+        $this->shouldThrow('RuntimeException')->duringCheck([$call], $object, $method);
     }
 }

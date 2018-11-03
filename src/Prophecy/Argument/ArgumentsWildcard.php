@@ -21,7 +21,7 @@ class ArgumentsWildcard
     /**
      * @var Token\TokenInterface[]
      */
-    private $tokens = array();
+    private $tokens = [];
     private $string;
 
     /**

@@ -150,7 +150,7 @@ As a matter of fact, the call that we made earlier (`willReturn('value')`) is a 
 shortcut to:
 
 ```php
-$prophecy->read('123')->will(new Prophecy\Promise\ReturnPromise(array('value')));
+$prophecy->read('123')->will(new Prophecy\Promise\ReturnPromise(['value']));
 ```
 
 This promise will cause any call to our double's `read()` method with exactly one

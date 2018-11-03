@@ -21,7 +21,7 @@ class CallPredictionSpec extends ObjectBehavior
         MethodProphecy $method,
         Call $call
     ) {
-        $this->check(array($call), $object, $method)->shouldReturn(null);
+        $this->check([$call], $object, $method)->shouldReturn(null);
     }
 
     function it_throws_NoCallsException_if_no_calls_found(
@@ -34,9 +34,9 @@ class CallPredictionSpec extends ObjectBehavior
         $method->getArgumentsWildcard()->willReturn($arguments);
         $arguments->__toString()->willReturn('123');
         $object->reveal()->willReturn(new \stdClass());
-        $object->findProphecyMethodCalls('getName', Argument::any())->willReturn(array());
+        $object->findProphecyMethodCalls('getName', Argument::any())->willReturn([]);
 
         $this->shouldThrow('Prophecy\Exception\Prediction\NoCallsException')
-            ->duringCheck(array(), $object, $method);
+            ->duringCheck([], $object, $method);
     }
 }

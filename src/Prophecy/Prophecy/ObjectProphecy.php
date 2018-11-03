@@ -37,7 +37,7 @@ class ObjectProphecy implements ProphecyInterface
     /**
      * @var MethodProphecy[][]
      */
-    private $methodProphecies = array();
+    private $methodProphecies = [];
 
     /**
      * Initializes object prophecy.
@@ -149,7 +149,7 @@ class ObjectProphecy implements ProphecyInterface
         $methodName = $methodProphecy->getMethodName();
 
         if (!isset($this->methodProphecies[$methodName])) {
-            $this->methodProphecies[$methodName] = array();
+            $this->methodProphecies[$methodName] = [];
         }
 
         $this->methodProphecies[$methodName][] = $methodProphecy;
@@ -169,7 +169,7 @@ class ObjectProphecy implements ProphecyInterface
         }
 
         if (!isset($this->methodProphecies[$methodName])) {
-            return array();
+            return [];
         }
 
         return $this->methodProphecies[$methodName];

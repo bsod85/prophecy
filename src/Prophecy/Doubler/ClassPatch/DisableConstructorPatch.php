@@ -54,7 +54,7 @@ class DisableConstructorPatch implements ClassPatchInterface
 
         $constructor->setCode(<<<PHP
 if (0 < func_num_args()) {
-    call_user_func_array(array('parent', '__construct'), func_get_args());
+    call_user_func_array(['parent', '__construct'], func_get_args());
 }
 PHP
         );

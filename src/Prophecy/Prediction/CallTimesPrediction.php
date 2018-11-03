@@ -59,7 +59,7 @@ class CallTimesPrediction implements PredictionInterface
 
         $methodCalls = $object->findProphecyMethodCalls(
             $method->getMethodName(),
-            new ArgumentsWildcard(array(new AnyValuesToken))
+            new ArgumentsWildcard([new AnyValuesToken])
         );
 
         if (count($calls)) {

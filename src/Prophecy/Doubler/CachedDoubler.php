@@ -21,14 +21,14 @@ use ReflectionClass;
  */
 class CachedDoubler extends Doubler
 {
-    private $classes = array();
+    private $classes = [];
 
     /**
      * {@inheritdoc}
      */
     public function registerClassPatch(ClassPatch\ClassPatchInterface $patch)
     {
-        $this->classes[] = array();
+        $this->classes[] = [];
 
         parent::registerClassPatch($patch);
     }
@@ -54,7 +54,7 @@ class CachedDoubler extends Doubler
      */
     private function generateClassId(ReflectionClass $class = null, array $interfaces)
     {
-        $parts = array();
+        $parts = [];
         if (null !== $class) {
             $parts[] = $class->getName();
         }

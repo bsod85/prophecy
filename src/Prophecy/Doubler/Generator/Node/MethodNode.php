@@ -32,7 +32,7 @@ class MethodNode
     /**
      * @var ArgumentNode[]
      */
-    private $arguments = array();
+    private $arguments = [];
 
     /**
      * @var TypeHintReference
@@ -62,7 +62,7 @@ class MethodNode
     {
         $visibility = strtolower($visibility);
 
-        if (!in_array($visibility, array('public', 'private', 'protected'))) {
+        if (!in_array($visibility, ['public', 'private', 'protected'])) {
             throw new InvalidArgumentException(sprintf(
                 '`%s` method visibility is not supported.', $visibility
             ));
@@ -123,12 +123,12 @@ class MethodNode
             $this->returnType = null;
             return;
         }
-        $typeMap = array(
+        $typeMap = [
             'double' => 'float',
             'real' => 'float',
             'boolean' => 'bool',
             'integer' => 'int',
-        );
+        ];
         if (isset($typeMap[$type])) {
             $type = $typeMap[$type];
         }
@@ -180,7 +180,7 @@ class MethodNode
     {
         $this->code = sprintf(
             'return parent::%s(%s);', $this->getName(), implode(', ',
-                array_map(array($this, 'generateArgument'), $this->arguments)
+                array_map([$this, 'generateArgument'], $this->arguments)
             )
         );
     }

@@ -19,8 +19,8 @@ class ProphecyComparatorSpec extends ObjectBehavior
         $this->accepts('string', 'string')->shouldReturn(false);
         $this->accepts(false, true)->shouldReturn(false);
         $this->accepts(true, false)->shouldReturn(false);
-        $this->accepts((object)array(), (object)array())->shouldReturn(false);
-        $this->accepts(function(){}, (object)array())->shouldReturn(false);
+        $this->accepts((object)[], (object)[])->shouldReturn(false);
+        $this->accepts(function(){}, (object)[])->shouldReturn(false);
         $this->accepts(function(){}, function(){})->shouldReturn(false);
 
         $prophet = new Prophet();
@@ -33,7 +33,7 @@ class ProphecyComparatorSpec extends ObjectBehavior
     {
         $prophet = new Prophet();
         $prophecy = $prophet->prophesize('Prophecy\Prophecy\ObjectProphecy');
-        $prophecy->__call('reveal', array())->willReturn(new \stdClass());
+        $prophecy->__call('reveal', [])->willReturn(new \stdClass());
 
         $this->shouldNotThrow()->duringAssertEquals($prophecy->reveal(), $prophecy);
     }

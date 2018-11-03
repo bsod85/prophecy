@@ -44,7 +44,7 @@ class ArrayEveryEntryToken implements TokenInterface
             return false;
         }
 
-        $scores = array();
+        $scores = [];
         foreach ($argument as $key => $argumentEntry) {
             $scores[] = $this->value->scoreArgument($argumentEntry);
         }

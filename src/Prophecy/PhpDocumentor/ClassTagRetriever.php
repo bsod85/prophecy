@@ -46,7 +46,7 @@ final class ClassTagRetriever implements MethodTagRetrieverInterface
 
             return $phpdoc->getTagsByName('method');
         } catch (\InvalidArgumentException $e) {
-            return array();
+            return [];
         }
     }
 }

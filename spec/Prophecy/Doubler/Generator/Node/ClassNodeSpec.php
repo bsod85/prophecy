@@ -60,7 +60,7 @@ class ClassNodeSpec extends ObjectBehavior
         $this->addInterface('MyInterface');
 
         $this->getInterfaces()->shouldHaveCount(1);
-        $this->getInterfaces()->shouldReturn(array('MyInterface'));
+        $this->getInterfaces()->shouldReturn(['MyInterface']);
     }
 
     function it_does_not_have_methods_by_default()
@@ -76,10 +76,10 @@ class ClassNodeSpec extends ObjectBehavior
         $this->addMethod($method1);
         $this->addMethod($method2);
 
-        $this->getMethods()->shouldReturn(array(
+        $this->getMethods()->shouldReturn([
             '__construct' => $method1,
             'getName'     => $method2
-        ));
+        ]);
     }
 
     function its_hasMethod_returns_true_if_method_exists(MethodNode $method)
@@ -124,10 +124,10 @@ class ClassNodeSpec extends ObjectBehavior
     {
         $this->addProperty('title');
         $this->addProperty('text', 'private');
-        $this->getProperties()->shouldReturn(array(
+        $this->getProperties()->shouldReturn([
             'title' => 'public',
             'text'  => 'private'
-        ));
+        ]);
     }
 
     function its_addProperty_does_not_accept_unsupported_visibility()
@@ -138,7 +138,7 @@ class ClassNodeSpec extends ObjectBehavior
     function its_addProperty_lowercases_visibility_before_setting()
     {
         $this->addProperty('text', 'PRIVATE');
-        $this->getProperties()->shouldReturn(array('text' => 'private'));
+        $this->getProperties()->shouldReturn(['text' => 'private']);
     }
 
     function its_has_no_unextendable_methods_by_default()

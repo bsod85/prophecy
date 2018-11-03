@@ -44,9 +44,9 @@ class ObjectProphecySpec extends ObjectBehavior
 
     function it_sets_constructor_arguments_during_willBeConstructedWith_call($lazyDouble)
     {
-        $lazyDouble->setArguments(array(1, 2, 5))->shouldBeCalled();
+        $lazyDouble->setArguments([1, 2, 5])->shouldBeCalled();
 
-        $this->willBeConstructedWith(array(1, 2, 5));
+        $this->willBeConstructedWith([1, 2, 5]);
     }
 
     function it_does_not_have_method_prophecies_by_default()
@@ -82,9 +82,9 @@ class ObjectProphecySpec extends ObjectBehavior
     {
         $this->beConstructedWith($lazyDouble, $callCenter);
 
-        $callCenter->makeCall($this->getWrappedObject(), 'setName', array('everzet'))->willReturn(42);
+        $callCenter->makeCall($this->getWrappedObject(), 'setName', ['everzet'])->willReturn(42);
 
-        $this->makeProphecyMethodCall('setName', array('everzet'))->shouldReturn(42);
+        $this->makeProphecyMethodCall('setName', ['everzet'])->shouldReturn(42);
     }
 
     function it_should_reveal_arguments_and_return_values_from_callCenter(
@@ -94,12 +94,12 @@ class ObjectProphecySpec extends ObjectBehavior
     ) {
         $this->beConstructedWith($lazyDouble, $callCenter, $revealer);
 
-        $revealer->reveal(array('question'))->willReturn(array('life'));
+        $revealer->reveal(['question'])->willReturn(['life']);
         $revealer->reveal('answer')->willReturn(42);
 
-        $callCenter->makeCall($this->getWrappedObject(), 'setName', array('life'))->willReturn('answer');
+        $callCenter->makeCall($this->getWrappedObject(), 'setName', ['life'])->willReturn('answer');
 
-        $this->makeProphecyMethodCall('setName', array('question'))->shouldReturn(42);
+        $this->makeProphecyMethodCall('setName', ['question'])->shouldReturn(42);
     }
 
     function it_should_proxy_getProphecyMethodCalls_to_CallCenter(
@@ -110,9 +110,9 @@ class ObjectProphecySpec extends ObjectBehavior
     ) {
         $this->beConstructedWith($lazyDouble, $callCenter);
 
-        $callCenter->findCalls('setName', $wildcard)->willReturn(array($call));
+        $callCenter->findCalls('setName', $wildcard)->willReturn([$call]);
 
-        $this->findProphecyMethodCalls('setName', $wildcard)->shouldReturn(array($call));
+        $this->findProphecyMethodCalls('setName', $wildcard)->shouldReturn([$call]);
     }
 
     function its_addMethodProphecy_adds_method_prophecy(
@@ -124,9 +124,9 @@ class ObjectProphecySpec extends ObjectBehavior
 
         $this->addMethodProphecy($methodProphecy);
 
-        $this->getMethodProphecies()->shouldReturn(array(
-            'getUsername' => array($methodProphecy)
-        ));
+        $this->getMethodProphecies()->shouldReturn([
+            'getUsername' => [$methodProphecy]
+        ]);
     }
 
     function its_addMethodProphecy_handles_prophecies_with_different_arguments(
@@ -144,12 +144,12 @@ class ObjectProphecySpec extends ObjectBehavior
         $this->addMethodProphecy($methodProphecy1);
         $this->addMethodProphecy($methodProphecy2);
 
-        $this->getMethodProphecies()->shouldReturn(array(
-            'getUsername' => array(
+        $this->getMethodProphecies()->shouldReturn([
+            'getUsername' => [
                 $methodProphecy1,
                 $methodProphecy2,
-            )
-        ));
+            ]
+        ]);
     }
 
     function its_addMethodProphecy_handles_prophecies_for_different_methods(
@@ -167,14 +167,14 @@ class ObjectProphecySpec extends ObjectBehavior
         $this->addMethodProphecy($methodProphecy1);
         $this->addMethodProphecy($methodProphecy2);
 
-        $this->getMethodProphecies()->shouldReturn(array(
-            'getUsername' => array(
+        $this->getMethodProphecies()->shouldReturn([
+            'getUsername' => [
                 $methodProphecy1
-            ),
-            'isUsername' => array(
+            ],
+            'isUsername' => [
                 $methodProphecy2
-            )
-        ));
+            ]
+        ]);
     }
 
     function its_addMethodProphecy_throws_exception_when_method_has_no_ArgumentsWildcard(MethodProphecy $methodProphecy)

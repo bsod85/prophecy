@@ -25,7 +25,7 @@ use ReflectionParameter;
  */
 class ClassMirror
 {
-    private static $reflectableMethods = array(
+    private static $reflectableMethods = [
         '__construct',
         '__destruct',
         '__sleep',
@@ -33,7 +33,7 @@ class ClassMirror
         '__toString',
         '__call',
         '__invoke'
-    );
+    ];
 
     /**
      * Reflects provided arguments into class node.

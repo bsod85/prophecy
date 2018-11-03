@@ -33,7 +33,7 @@ class NameGenerator
      */
     public function name(ReflectionClass $class = null, array $interfaces)
     {
-        $parts = array();
+        $parts = [];
 
         if (null !== $class) {
             $parts[] = $class->getName();

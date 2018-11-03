@@ -47,7 +47,7 @@ class ArrayEveryEntryTokenSpec extends ObjectBehavior
 
     function it_does_not_score_empty_array()
     {
-        $this->scoreArgument(array())->shouldBe(false);
+        $this->scoreArgument([])->shouldBe(false);
     }
 
     function it_does_not_score_traversable_object_without_entries(\Iterator $object)
@@ -62,21 +62,21 @@ class ArrayEveryEntryTokenSpec extends ObjectBehavior
     {
         $value->scoreArgument('value1')->willReturn(6);
         $value->scoreArgument('value2')->willReturn(3);
-        $this->scoreArgument(array('value1', 'value2'))->shouldBe(4.5);
+        $this->scoreArgument(['value1', 'value2'])->shouldBe(4.5);
     }
 
     function it_scores_false_if_entry_scores_false($value)
     {
         $value->scoreArgument('value1')->willReturn(6);
         $value->scoreArgument('value2')->willReturn(false);
-        $this->scoreArgument(array('value1', 'value2'))->shouldBe(false);
+        $this->scoreArgument(['value1', 'value2'])->shouldBe(false);
     }
 
     function it_does_not_score_array_keys($value)
     {
         $value->scoreArgument('value')->willReturn(6);
         $value->scoreArgument('key')->shouldNotBeCalled(0);
-        $this->scoreArgument(array('key' => 'value'))->shouldBe(6);
+        $this->scoreArgument(['key' => 'value'])->shouldBe(6);
     }
 
     function it_scores_traversable_object_from_value_token(TokenInterface $value, \Iterator $object)

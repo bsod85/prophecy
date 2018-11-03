@@ -31,7 +31,7 @@ class MethodProphecy
     private $argumentsWildcard;
     private $promise;
     private $prediction;
-    private $checkedPredictions = array();
+    private $checkedPredictions = [];
     private $bound = false;
     private $voidReturnType = false;
 
@@ -84,7 +84,7 @@ class MethodProphecy
                     case 'float':  return 0.0;
                     case 'int':    return 0;
                     case 'bool':   return false;
-                    case 'array':  return array();
+                    case 'array':  return [];
 
                     case 'callable':
                     case 'Closure':

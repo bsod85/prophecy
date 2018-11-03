@@ -13,7 +13,7 @@ class UnexpectedCallsExceptionSpec extends ObjectBehavior
     {
         $methodProphecy->getObjectProphecy()->willReturn($objectProphecy);
 
-        $this->beConstructedWith('message', $methodProphecy, array($call1, $call2));
+        $this->beConstructedWith('message', $methodProphecy, [$call1, $call2]);
     }
 
     function it_is_PredictionException()
@@ -28,6 +28,6 @@ class UnexpectedCallsExceptionSpec extends ObjectBehavior
 
     function it_should_expose_calls_list_through_getter($call1, $call2)
     {
-        $this->getCalls()->shouldReturn(array($call1, $call2));
+        $this->getCalls()->shouldReturn([$call1, $call2]);
     }
 }

@@ -37,11 +37,11 @@ class KeywordPatchSpec extends ObjectBehavior
         $method2->getName()->willReturn('eval');
         $method3->getName()->willReturn('notKeyword');
 
-        $node->getMethods()->willReturn(array(
+        $node->getMethods()->willReturn([
             'echo' => $method1,
             'eval' => $method2,
             'notKeyword' => $method3,
-        ));
+        ]);
 
         $this->apply($node);
     }
@@ -62,11 +62,11 @@ class KeywordPatchSpec extends ObjectBehavior
         $method2->getName()->willReturn('echo');
         $method3->getName()->willReturn('notKeyword');
 
-        $node->getMethods()->willReturn(array(
+        $node->getMethods()->willReturn([
             '__halt_compiler' => $method1,
             'echo' => $method2,
             'notKeyword' => $method3,
-        ));
+        ]);
 
         $this->apply($node);
     }

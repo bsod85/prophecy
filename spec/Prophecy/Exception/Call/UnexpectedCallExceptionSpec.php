@@ -10,7 +10,7 @@ class UnexpectedCallExceptionSpec extends ObjectBehavior
 {
     function let(ObjectProphecy $objectProphecy)
     {
-        $this->beConstructedWith('msg', $objectProphecy, 'getName', array('arg1', 'arg2'));
+        $this->beConstructedWith('msg', $objectProphecy, 'getName', ['arg1', 'arg2']);
     }
 
     function it_is_prophecy_exception()
@@ -25,6 +25,6 @@ class UnexpectedCallExceptionSpec extends ObjectBehavior
 
     function it_exposes_arguments_through_getter()
     {
-        $this->getArguments()->shouldReturn(array('arg1', 'arg2'));
+        $this->getArguments()->shouldReturn(['arg1', 'arg2']);
     }
 }

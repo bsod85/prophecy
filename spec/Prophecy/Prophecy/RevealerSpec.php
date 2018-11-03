@@ -28,13 +28,13 @@ class RevealerSpec extends ObjectBehavior
         $prophecy1->reveal()->willReturn($object1);
         $prophecy2->reveal()->willReturn($object2);
 
-        $this->reveal(array(
-            array('item' => $prophecy2),
+        $this->reveal([
+            ['item' => $prophecy2],
             $prophecy1
-        ))->shouldReturn(array(
-            array('item' => $object2),
+        ])->shouldReturn([
+            ['item' => $object2],
             $object1
-        ));
+        ]);
     }
 
     function it_does_not_touch_non_prophecy_interface()

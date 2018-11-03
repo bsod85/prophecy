@@ -33,7 +33,7 @@ class Doubler
     /**
      * @var ClassPatchInterface[]
      */
-    private $patches = array();
+    private $patches = [];
 
     /**
      * @var \Doctrine\Instantiator\Instantiator

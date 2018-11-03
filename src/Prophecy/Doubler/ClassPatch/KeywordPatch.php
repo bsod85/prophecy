@@ -64,10 +64,10 @@ class KeywordPatch implements ClassPatchInterface
     private function getKeywords()
     {
         if (\PHP_VERSION_ID >= 70000) {
-            return array('__halt_compiler');
+            return ['__halt_compiler'];
         }
 
-        return array(
+        return [
             '__halt_compiler',
             'abstract',
             'and',
@@ -135,6 +135,6 @@ class KeywordPatch implements ClassPatchInterface
             'while',
             'xor',
             'yield',
-        );
+        ];
     }
 }

@@ -43,8 +43,8 @@ class IdenticalValueTokenSpec extends ObjectBehavior
 
     function it_scores_11_if_array_value_is_identical_to_argument()
     {
-        $this->beConstructedWith(array('foo' => 'bar'));
-        $this->scoreArgument(array('foo' => 'bar'))->shouldReturn(11);
+        $this->beConstructedWith(['foo' => 'bar']);
+        $this->scoreArgument(['foo' => 'bar'])->shouldReturn(11);
     }
 
     function it_scores_11_if_object_value_is_identical_to_argument()
@@ -122,13 +122,13 @@ class IdenticalValueTokenSpec extends ObjectBehavior
 
     function it_generates_proper_string_representation_for_empty_array()
     {
-        $this->beConstructedWith(array());
+        $this->beConstructedWith([]);
         $this->__toString()->shouldReturn('identical([])');
     }
 
     function it_generates_proper_string_representation_for_array()
     {
-        $this->beConstructedWith(array('zet', 42));
+        $this->beConstructedWith(['zet', 42]);
         $this->__toString()->shouldReturn('identical(["zet", 42])');
     }
 

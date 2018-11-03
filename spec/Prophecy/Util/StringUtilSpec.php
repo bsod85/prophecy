@@ -43,22 +43,22 @@ class StringUtilSpec extends ObjectBehavior
 
     function it_generates_proper_string_representation_for_empty_array()
     {
-        $this->stringify(array())->shouldReturn('[]');
+        $this->stringify([])->shouldReturn('[]');
     }
 
     function it_generates_proper_string_representation_for_array()
     {
-        $this->stringify(array('zet', 42))->shouldReturn('["zet", 42]');
+        $this->stringify(['zet', 42])->shouldReturn('["zet", 42]');
     }
 
     function it_generates_proper_string_representation_for_hash_containing_one_value()
     {
-        $this->stringify(array('ever' => 'zet'))->shouldReturn('["ever" => "zet"]');
+        $this->stringify(['ever' => 'zet'])->shouldReturn('["ever" => "zet"]');
     }
 
     function it_generates_proper_string_representation_for_hash()
     {
-        $this->stringify(array('ever' => 'zet', 52 => 'hey', 'num' => 42))->shouldReturn(
+        $this->stringify(['ever' => 'zet', 52 => 'hey', 'num' => 42])->shouldReturn(
             '["ever" => "zet", 52 => "hey", "num" => 42]'
         );
     }
