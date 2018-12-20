@@ -37,5 +37,15 @@ class ProphetTest extends TestCase
         $double->methodWithoutTypeHints($doubleArg1)->shouldNotHaveBeenCalled();
 
         $prophet->checkPredictions();
+
+        $returnVal = $object->methodWithoutTypeHints($doubleArg1);
+
+        $this->assertEquals($returnVal, 'A');
+
+        $double->methodWithoutTypeHints($doubleArg1)->shouldHaveBeenCalled();
+
+        $prophet->checkPredictions();
+
+
     }
 }
